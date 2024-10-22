@@ -2,10 +2,10 @@ package presentacion;
 import dominio.*;
 import java.util.*;
 public class Interfaz {
-    private Pais p = new Pais();
+    private Pais P = new Pais();
     private Scanner teclado = new Scanner(System.in);
     public Interfaz() {
-        p = Pais.leer();
+        P = Pais.leer();
         //implementar
     }
     public String[] leerPeticion() {
@@ -22,7 +22,7 @@ public class Interfaz {
             else if (peticion[0].equalsIgnoreCase("addLocalidad"))
                 annadirLocalidad();
             else if (peticion[0].equalsIgnoreCase("list"))
-                System.out.println(peticion);
+                System.out.println(P);
             else if (peticion[0].equalsIgnoreCase("read"))
                 leer();
             else if (peticion[0].equalsIgnoreCase("exit")) {
@@ -58,27 +58,27 @@ public class Interfaz {
         //implementar
         System.out.print("Nombre de la provincia: ");
         String nombre = teclado.nextLine();
-        p.add(new Provincia(nombre));
+        P.add(new Provincia(nombre));
         grabar();
     }
     public  void annadirMunicipio() {
         //implementar
         int numeroP;
         do {
-            p.listadoProvincias();
+            P.listadoProvincias();
             System.out.print("Número de provincia: ");
             numeroP = teclado.nextInt();
             teclado.nextLine(); //Si no incluímos el nextLine, se guardará una línea vacía.
 
-            if (numeroP <= (p.size()+1)) {
+            if (numeroP <= (P.size()+1)) {
                 System.out.print("Nombre del municipio: ");
                 String nombre = teclado.nextLine();
-                p.getProvincia(numeroP).add(new Municipio(nombre));
+                P.getProvincia(numeroP).add(new Municipio(nombre));
             } else {
                 System.out.println("Número de provincia incorrecta. Inténtalo de nuevo.");
             }
 
-        } while (numeroP > (p.size()+1));
+        } while (numeroP > (P.size()+1));
         grabar();
     }
     public  void annadirLocalidad() {
@@ -86,42 +86,42 @@ public class Interfaz {
         int numeroP,numeroM;
         do {
 
-            p.listadoProvincias();
+            P.listadoProvincias();
             System.out.print("Número de provincia: ");
             numeroP = teclado.nextInt();
             teclado.nextLine(); //Si no incluímos el nextLine, se guardará una línea vacía.
 
-            if (numeroP <= (p.size() + 1)) {
+            if (numeroP <= (P.size() + 1)) {
                 do {
 
-                    p.getProvincia(numeroP).listadoMunicipios();
+                    P.getProvincia(numeroP).listadoMunicipios();
                     System.out.print("Número de provincia: ");
                     numeroM = teclado.nextInt();
                     teclado.nextLine(); //Si no incluímos el nextLine, se guardará una línea vacía.
 
-                    if (numeroM <= (p.getProvincia(numeroP).size() + 1)) {
+                    if (numeroM <= (P.getProvincia(numeroP).size() + 1)) {
                         System.out.print("Nombre de la localidad: ");
                         String nombre = teclado.nextLine();
                         System.out.print("Número de habitantes: ");
                         int habitantes = teclado.nextInt();
                         teclado.nextLine();
                         // Creamos la localidad
-                        p.getProvincia(numeroP).getMunicipio(numeroM).add(new Localidad(nombre, habitantes));
+                        P.getProvincia(numeroP).getMunicipio(numeroM).add(new Localidad(nombre, habitantes));
                     }
                     else {
                         System.out.println("Número de municipio incorrecto. Inténtalo de nuevo.");
                     }
 
-                } while (numeroM > (p.getProvincia(numeroP).size() + 1));
+                } while (numeroM > (P.getProvincia(numeroP).size() + 1));
             } else {
                 System.out.println("Número de provincia incorrecta. Inténtalo de nuevo.");
             }
 
-        } while (numeroP > (p.size()+1));
+        } while (numeroP > (P.size()+1));
         grabar();
     }
     public void grabar() {
-        p.grabar();
+        P.grabar();
     }
     public  void leer() {
         String nombreP, nombreM, nombreL;
@@ -154,7 +154,7 @@ public class Interfaz {
 
                     }
                 } while (!nombreM.isEmpty());
-                p.add(provincia);
+                P.add(provincia);
 
             }
         }
