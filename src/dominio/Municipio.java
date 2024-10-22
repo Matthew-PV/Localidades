@@ -14,13 +14,30 @@ public class Municipio {
     }
 
     public String getNombre() {return nombre;}
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) {this.nombre = nombre;}
+
+
+    //Trabajo con localidades:
+    public ArrayList<Localidad> getLocalidades() {return Localidades;}
+    public Municipio setLocalidades(ArrayList<Localidad> Localidades) {
+        this.Localidades = Localidades;
+        return this;
     }
+    public Localidad getLocalidad(int index) {return Localidades.get(index);}
     public Municipio add(Localidad localidad){
         Localidades.add(localidad);
         return this;
     }
+    public int size() {return Localidades.size();}
+    public void listadoLocalidades() {
+        System.out.println("Listado de localidades");
+        for (int i = 0 ; i < size() ; i++) {
+            System.out.println('\t' + (i + 1) + ". " + getLocalidad(i).getNombre());
+        }
+    }
+
+
+    //Métodos del Municipio
     public int habitantesMunicipio() {
         int suma = 0;
         for (Localidad localidad : Localidades) {
@@ -28,13 +45,13 @@ public class Municipio {
         }
         return suma;
     }
-    public String toString() {return nombre;}
-    public String info() {
-        StringBuilder info = new StringBuilder("Municipio: " + nombre + "\nLocalidades:\n");
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Municipio: ").append(nombre).append("\nLocalidades:\n");
         for (Localidad localidad : Localidades) {
-            info.append("\t").append(localidad.getNombre()).append('\n');
+            sb.append('\t').append(localidad.getNombre()).append('\n');
         }
-        info.append("Número total de habitantes: ").append(habitantesMunicipio());
-        return info.toString();
+        sb.append("Número total de habitantes: ").append(habitantesMunicipio());
+        return sb.toString();
     }
 }

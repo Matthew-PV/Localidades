@@ -14,13 +14,13 @@ public class Localidad {
     }
 
     public String getNombre() {return nombre;}
-    public int getNumeroDeHabitantes() {return numeroDeHabitantes;}
-
     public void setNombre(String nombre) {this.nombre = nombre;}
+    public int getNumeroDeHabitantes() {return numeroDeHabitantes;}
     public void setNumeroDeHabitantes(int numeroDeHabitantes) {this.numeroDeHabitantes=numeroDeHabitantes;}
 
-    public String toString() {return nombre;}
-    public String info() {
-        return "Localidad: "+nombre+"\nHabitantes "+nombre+": "+numeroDeHabitantes;
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Localidad: ").append(nombre).append("\nHabitantes ").append(nombre).append(": ").append(numeroDeHabitantes);
+        return sb.toString();
     }
 }

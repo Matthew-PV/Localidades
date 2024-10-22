@@ -1,3 +1,8 @@
+/**
+ *
+ * Matthew Puente-Villegas Michavila
+ *
+ */
 package aplicacion;
 import dominio.*;
 import java.util.ArrayList;
@@ -6,7 +11,7 @@ public class Principal {
         //1) Comprobación clase localidad:
         System.out.println("Crearemos una localidad y la mostraremos por pantalla.");
         Localidad GuadalajaraL /*L de Localidad*/ = new Localidad("guadalajara",91000);
-        System.out.println(GuadalajaraL.info());
+        System.out.println(GuadalajaraL);
 
 
         //2) Comprobación clase municipio:
@@ -20,7 +25,7 @@ public class Principal {
 
         //2.2) Ahora creamos el municipio
         Municipio GuadalajaraM /*M de Municipio*/ = new Municipio("Guadalajara",MunicipioGuadalajara);
-        System.out.println(GuadalajaraM.info());
+        System.out.println(GuadalajaraM);
 
 
         //3) Comprobación clase provincia:
@@ -34,12 +39,12 @@ public class Principal {
         //3.2) Creamos y añadimos el nuevo municipio
         Municipio MarchamaloM = new Municipio("marchamalo", MunicipioMarchamalo);
         ArrayList<Municipio> ProvinciaGuadalajara = new ArrayList<>();
-        System.out.println("Nuevo "+MarchamaloM.info().toLowerCase().charAt(0)+
-                MarchamaloM.info().substring(1)+'\n');
+        System.out.println("Nuevo "+MarchamaloM.toString().toLowerCase().charAt(0)+
+                MarchamaloM.toString().substring(1)+'\n');
         ProvinciaGuadalajara.add(GuadalajaraM); ProvinciaGuadalajara.add(MarchamaloM);
 
         //3.3) Ahora creamos la provincia
         Provincia GuadalajaraP /*P de Provincia*/ = new Provincia("Guadalajara",ProvinciaGuadalajara);
-        System.out.println(GuadalajaraP.info());
+        System.out.println(GuadalajaraP);
     }
 }

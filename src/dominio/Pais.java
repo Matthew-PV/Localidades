@@ -20,6 +20,10 @@ public class Pais {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+
+    // Trabajo con las provincias
+    public ArrayList<Provincia> getProvincias() {return Provincias;}
     public Provincia getProvincia(int index) {
         return Provincias.get(index);
     }
@@ -28,6 +32,14 @@ public class Pais {
         return this;
     }
     public int size() {return Provincias.size();}
+    public void listadoProvincias() {
+        System.out.println("Listado de provincias");
+        for (int i = 0 ; i < size() ; i++) {
+            System.out.println('\t' + (i + 1) + ". " + getProvincia(i).getNombre());
+        }
+    }
+
+    //Métodos del País
     public int habitantesPais(){
         int suma=0;
         for(Provincia provincia : Provincias){
@@ -54,6 +66,13 @@ public class Pais {
             return new Pais(); //Se devuelve un país vacío.
         }
     }
-    public String toString(){return nombre;}
-    //Escribir el info()
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("País: ").append(nombre).append("\nProvincias:\n");
+        for (Provincia provincia : Provincias) {
+            sb.append('\t').append(provincia.getNombre()).append('\n');
+        }
+        sb.append("Número total de habitantes: ").append(habitantesPais());
+        return sb.toString();
+    }
 }
