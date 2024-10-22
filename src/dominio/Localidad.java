@@ -1,20 +1,26 @@
 package dominio;
-public class Localidad{
+public class Localidad {
     private String nombre;
-    private int poblacion;
-    public Localidad(String nombre_,int poblacion_) {
-        nombre=nombre_;
-        poblacion=poblacion_;
+    private int numeroDeHabitantes;
+
+    public Localidad() {}
+    public Localidad(String nombre) {
+        this.nombre = nombre.toUpperCase().charAt(0)+nombre.substring(1).toLowerCase();
     }
-    public String toString(){
-        return "Localidad: "+ nombre+" Población: "+poblacion+" habitantes\n";
+    public Localidad(String nombre, int numeroDeHabitantes) {
+        this.nombre = nombre.toUpperCase().charAt(0)+nombre.substring(1).toLowerCase();
+        //Reescrito de forma que el nombre tenga la primera letra mayúscula :).
+        this.numeroDeHabitantes = numeroDeHabitantes;
     }
 
-    public int getPoblacion() {
-        return poblacion;
-    }
+    public String getNombre() {return nombre;}
+    public int getNumeroDeHabitantes() {return numeroDeHabitantes;}
 
-    public String getNombre() {
-        return nombre;
+    public void setNombre(String nombre) {this.nombre = nombre;}
+    public void setNumeroDeHabitantes(int numeroDeHabitantes) {this.numeroDeHabitantes=numeroDeHabitantes;}
+
+    public String toString() {return nombre;}
+    public String info() {
+        return "Localidad: "+nombre+"\nHabitantes "+nombre+": "+numeroDeHabitantes;
     }
 }
